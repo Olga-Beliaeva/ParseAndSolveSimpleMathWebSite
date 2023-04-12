@@ -1,4 +1,6 @@
 # Simple formula (binary operations) parser
+# returns formula result
+
 
 import ast
 import operator
