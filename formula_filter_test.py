@@ -5,19 +5,20 @@ it has been made for parsing tasks of the specifaid site only:
 https://www.math10.com/problems/addition-and-subtraction-problems-up-to-100/normal/
 """
 
+
 def formula_filter(formula: str) -> str:
     try:
-        # may start with ( and digits or with digits only
-        # have to contain any char from []
-        # may end with digits and ) or with digits only
-        # may contain any 2 or 3 chars after main groups
-        # can't end with =
+        # it may start with ( and digits or with digits only
+        # it may consist any character
+        # and it has to end with =
         regex = re.compile(r'(\(|\d).+(=)$')
-        formula = re.search(r'.+[^=]',regex.search(formula).group()).group().strip()
+        # decline =
+        formula = re.search(r'.+[^=]', regex.search(formula).group()).group().strip()
         return formula
 
     except AttributeError as e:
         print(formula, "raises", type(e))
+        return ''
 
 
 if __name__ == '__main__':
