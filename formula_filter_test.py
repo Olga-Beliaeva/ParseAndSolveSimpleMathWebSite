@@ -1,12 +1,20 @@
 import re
 
 """
-it has been made for parsing tasks of the specifaid site only:
+# in support to solve_math_problem.py
+
+made for:
 https://www.math10.com/problems/addition-and-subtraction-problems-up-to-100/normal/
 """
 
 
-def formula_filter(formula: str) -> str:
+def formula_filter(formula: str) -> str or bool:
+    """
+    parse incoming formula so that it can be accepted
+    by formula_parser.py requirements
+
+    return either formula or False
+    """
     try:
         # it may start with ( and digits or with digits only
         # it may consist any character
@@ -14,16 +22,19 @@ def formula_filter(formula: str) -> str:
         regex = re.compile(r'(\(|\d).+(=)$')
         # decline =
         formula = re.search(r'.+[^=]', regex.search(formula).group()).group().strip()
+        # print(f'after formula_filter: {formula}')
         return formula
 
-    except AttributeError as e:
-        print(formula, "raises", type(e))
-        return ''
+    except AttributeError:
+        print('this formula raises error -> not eligible formula')
+        print('----*********----')
+        print()
+        return False
 
 
 if __name__ == '__main__':
     """
-    need to test:
+    to test:
     (a) 1|2|3-digit numbers in different scenarios of
     (b) addition|subtractin|multiplication|division
     (c) inside of () [or without them]
@@ -61,6 +72,6 @@ if __name__ == '__main__':
         'Fill in the box with the correct number: \n44 + - 30 = 44',                          # case: f
         'John had 100 chocolate egg toys. He gave 60 to Sissy. How many toys did John have? ' # case: f
     ]
-    for formula in TEST_CASES:
-        parse = formula_filter(formula)
-        print(formula, "(=)", parse)
+    # for formula in TEST_CASES:
+    #     parse = formula_filter(formula)
+    #     print(formula, "(=)", parse)
