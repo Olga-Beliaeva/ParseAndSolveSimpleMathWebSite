@@ -1,19 +1,22 @@
+
 # Simple formula (binary operations) parser
-# returns formula result
+# return formula result
+# in support to solve_math_problem.py
 
 
 import ast
 import operator
 from typing import Any, Dict
 
+"""
+sourse:
+https://blog.oyam.dev/python-formulas/#complete-code
+https://gist.github.com/yamnikov-oleg/fcf39fa8b22bf84b5f2931dac713d607
 
-# sourse:
-# https://blog.oyam.dev/python-formulas/#complete-code
-# https://gist.github.com/yamnikov-oleg/fcf39fa8b22bf84b5f2931dac713d607
-
-# due to a problem with returning ast.Num instead of ast.Constant for Python < 3.8
-# I increased EVALUATORS by an ast.Num and added a function to manage ast.Num
-
+Note:
+Due to a problem with returning ast.Num instead of ast.Constant for Python < 3.8
+I increased EVALUATORS by ast.Num and added a function to manage ast.Num
+"""
 def byte_offset_to_char_offset(source: str, byte_offset: int) -> int:
     while True:
         try:
