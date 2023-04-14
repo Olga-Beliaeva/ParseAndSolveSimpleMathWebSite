@@ -1,6 +1,6 @@
 # ParsingProjectGH
 
-**This mini-project is created to demonstrate skills in:*
+***This mini-project is created to demonstrate skills in:***
 
 - web parsing
 
